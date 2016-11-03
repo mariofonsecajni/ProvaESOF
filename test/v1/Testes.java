@@ -8,9 +8,66 @@ import org.junit.Test;
 public class Testes {
 
 	@Test
-	public void exemplo() {
+	public void testeGravida() {
+		Pessoa p1 = new Pessoa("Mario", false, false);
+		Pessoa p2 = new Pessoa("Fulana", true, false);
+		Pessoa p3 = new Pessoa("Ciclana", false, false);
+		
+		Fila f = new Fila();
+		
+		f.addPessoa(p1);
+		f.addPessoa(p2);
+		f.addPessoa(p3);
+		
+		Pessoa proximo = f.proximoFila();
+		
+		Assert.assertEquals(proximo.getNome(), "Fulana");
+		
+		f.removePessoa(proximo);
+		proximo = f.proximoFila();
+			
+		Assert.assertEquals(proximo.getNome(), "Mario");
+		
+		f.removePessoa(proximo);
+		proximo = f.proximoFila();
+		
+		Assert.assertEquals(proximo.getNome(), "Ciclana");
+		
+		f.removePessoa(proximo);
+	}
+	@Test
+	public void testeIdoso() {
+		Pessoa p1 = new Pessoa("Mario", false, false);
+		Pessoa p2 = new Pessoa("Fulana", true, false);
+		Pessoa p3 = new Pessoa("Beltrano", false, true);
+		
+		Fila f = new Fila();
+		
+		f.addPessoa(p1);
+		f.addPessoa(p2);
+		f.addPessoa(p3);
+		
+		Pessoa proximo = f.proximoFilaTodos();
+		
+		Assert.assertEquals(proximo.getNome(), "Beltrano");
+		
+		f.removePessoa(proximo);
+		proximo = f.proximoFilaTodos();
+			
+		Assert.assertEquals(proximo.getNome(), "Fulana");
+		
+		f.removePessoa(proximo);
+		proximo = f.proximoFilaTodos();
+		
+		Assert.assertEquals(proximo.getNome(), "Mario");
+		
+		f.removePessoa(proximo);
+	}
+	@Test
+	public void testeProblema() {
+		
 		Pessoa p1 = new Pessoa("Fulano", false, false);
-		Pessoa p2 = new Pessoa("Ciclana", false, false);
+		Pessoa p2 = new Pessoa("Ciclana", true, false);
 		Pessoa p3 = new Pessoa("Beltrana", false, false);
 		
 		Fila f = new Fila();
@@ -21,12 +78,12 @@ public class Testes {
 		
 		Pessoa proximo = f.proximoFila();
 		
-		Assert.assertEquals(proximo.getNome(), "Fulano");
+		Assert.assertEquals(proximo.getNome(), "Ciclana");
 		
 		f.removePessoa(proximo);
 		proximo = f.proximoFila();
 			
-		Assert.assertEquals(proximo.getNome(), "Ciclana");
+		Assert.assertEquals(proximo.getNome(), "Fulano");
 		
 		f.removePessoa(proximo);
 		proximo = f.proximoFila();
@@ -34,6 +91,8 @@ public class Testes {
 		Assert.assertEquals(proximo.getNome(), "Beltrana");
 		
 		f.removePessoa(proximo);
+		// testando o método alterado de próximo fila
+		proximo = f.proximoFila();
 	}
 
 }

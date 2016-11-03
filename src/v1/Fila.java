@@ -14,7 +14,7 @@ public class Fila {
 		pessoas.remove(p);
 	}
 	
-	public Pessoa proximoFila(){
+	/*public Pessoa proximoFila(){
 		Pessoa proximo = null;
 		
 		proximo = verificaGravida();
@@ -22,6 +22,41 @@ public class Fila {
 		if(proximo == null)
 			proximo = pessoas.get(0);
 		
+		return proximo;
+	}*/
+	
+	public Pessoa proximoFila(){
+		Pessoa proximo = null;
+		// verifica se a lista de pessoas esta vazia
+		if(!pessoas.isEmpty()){
+			proximo = verificaGravida();
+		
+			if(proximo == null)
+				proximo = pessoas.get(0);
+			}
+		return proximo;
+	
+		}
+
+	public Pessoa proximoFilaTodos() {
+		Pessoa proximo = null;
+		// verifica se a lista de pessoas esta vazia
+		if (!pessoas.isEmpty()) {
+
+			proximo = verificaIdoso();
+
+			if (proximo == null) {
+
+				proximo = verificaGravida();
+
+				if (proximo == null) {
+					proximo = pessoas.get(0);
+					
+				}
+				
+			}
+	
+		}
 		return proximo;
 	}
 	
